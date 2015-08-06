@@ -9,18 +9,29 @@ public class Movie {
 
 
     private String movieName;
+
+    private String movieDesc;
     private String movieImageUrl;
     private String movieAverage;
     private Date movieDate;
 
 
-    public Movie(String movieName, String movieImageUrl, String movieAverage, Date movieDate){
+    public Movie(String movieName, String movieDesc, String movieAverage){
 
         this.movieName = movieName;
-        this.movieImageUrl = movieImageUrl;
+        this.movieDesc = movieDesc;
+        //this.movieImageUrl = movieImageUrl;
         this.movieAverage = movieAverage;
-        this.movieDate = movieDate;
+        //this.movieDate = movieDate;
 
+    }
+
+    public String getMovieDesc() {
+        return movieDesc;
+    }
+
+    public void setMovieDesc(String movieDesc) {
+        this.movieDesc = movieDesc;
     }
 
     public String getMovieName() {
