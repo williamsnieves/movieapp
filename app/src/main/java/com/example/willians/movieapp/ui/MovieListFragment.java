@@ -11,15 +11,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.willians.movieapp.R;
-import com.example.willians.movieapp.domains.Movie;
+import com.example.willians.movieapp.rest.MovieListApiAdapter;
+import com.example.willians.movieapp.rest.models.MovieListResponse;
 import com.example.willians.movieapp.ui.adapters.MovieListAdapter;
 
-import java.util.ArrayList;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Created by willians on 05/08/15.
  */
-public class MovieListFragment extends Fragment {
+public class MovieListFragment extends Fragment implements Callback<MovieListResponse> {
 
     private RecyclerView mMoviewList;
     private MovieListAdapter adapter;
@@ -39,7 +42,7 @@ public class MovieListFragment extends Fragment {
         mMoviewList = (RecyclerView)fragment.findViewById(R.id.movie_list);
 
         setupMovieList();
-        setDummyData();
+        //setDummyData();
 
         return fragment;
     }
@@ -51,7 +54,25 @@ public class MovieListFragment extends Fragment {
         mMoviewList.setItemAnimator(new DefaultItemAnimator());
     }
 
-    public void setDummyData(){
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        MovieListApiAdapter.getApiService()
+                .getMovieList(this);
+    }
+
+    @Override
+    public void success(MovieListResponse movieListResponse, Response response) {
+        adapter.addAll(movieListResponse.getMovies());
+    }
+
+    @Override
+    public void failure(RetrofitError error) {
+        error.printStackTrace();
+    }
+
+    /*public void setDummyData(){
         ArrayList<Movie> artists = new ArrayList<>();
 
         for (int i=0;i<10;i++){
@@ -59,5 +80,5 @@ public class MovieListFragment extends Fragment {
         }
 
         adapter.addAll(artists);
-    }
+    }*/
 }

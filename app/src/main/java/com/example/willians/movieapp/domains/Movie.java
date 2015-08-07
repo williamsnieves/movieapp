@@ -15,6 +15,9 @@ public class Movie {
     private String movieAverage;
     private Date movieDate;
 
+    public Movie(){
+
+    }
 
     public Movie(String movieName, String movieDesc, String movieAverage){
 
