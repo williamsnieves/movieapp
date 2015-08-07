@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,11 +65,13 @@ public class MovieListFragment extends Fragment implements Callback<MovieListRes
 
     @Override
     public void success(MovieListResponse movieListResponse, Response response) {
+        Log.e("success", "caso de exito");
         adapter.addAll(movieListResponse.getMovies());
     }
 
     @Override
     public void failure(RetrofitError error) {
+        Log.e("error", "caso de error");
         error.printStackTrace();
     }
 

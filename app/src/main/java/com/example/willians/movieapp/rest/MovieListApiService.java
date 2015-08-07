@@ -13,4 +13,6 @@ public interface MovieListApiService {
     @Headers("Content-Type: application/json")
     @GET(ApiConstants.URL_MOVIE_SEARCH)
     void getMovieList(Callback<MovieListResponse> serverResponse);
+
+
 }

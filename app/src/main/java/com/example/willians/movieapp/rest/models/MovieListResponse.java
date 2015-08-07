@@ -17,8 +17,12 @@ public class MovieListResponse {
         return results.movies;
     }
 
+    public void setMovies(ArrayList<Movie> movies){
+        this.results.movies = movies;
+    }
+
     public class MovieListResults{
-        @SerializedName(JsonKey.MOVIE_ARRAY)
+
         ArrayList<Movie> movies;
     }
 }

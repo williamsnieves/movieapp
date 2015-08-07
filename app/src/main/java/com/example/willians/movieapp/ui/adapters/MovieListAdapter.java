@@ -39,8 +39,8 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
         Movie currentMovie = movies.get(position);
 
         holder.setMovieName(currentMovie.getMovieName());
-        holder.setMovieDesc(currentMovie.getMovieDesc());
-        holder.setMovieAverage(currentMovie.getMovieAverage());
+        //holder.setMovieDesc(currentMovie.getMovieDesc());
+       // holder.setMovieAverage(currentMovie.getMovieAverage());
     }
 
     @Override
@@ -71,14 +71,10 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
             super(itemView);
 
             movieName = (TextView)itemView.findViewById(R.id.movie_name);
-            movieDesc =(TextView)itemView.findViewById(R.id.movie_desc);
-            movieAvg =(TextView)itemView.findViewById(R.id.movie_avg);
+            //movieDesc =(TextView)itemView.findViewById(R.id.movie_desc);
+            //movieAvg =(TextView)itemView.findViewById(R.id.movie_avg);
         }
 
-        public void setMovieImage(String url){
-            //imgUrl.src(url);
-            //picasso
-        }
 
         public void setMovieName(String name){
             movieName.setText(name);
@@ -86,12 +82,6 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
 
         }
 
-        public void setMovieDesc(String description){
-            movieDesc.setText(description);
-        }
 
-        public void setMovieAverage(String average){
-            movieAvg.setText(average);
-        }
     }
 }

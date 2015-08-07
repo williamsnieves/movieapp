@@ -1,7 +1,5 @@
 package com.example.willians.movieapp.domains;
 
-import java.util.Date;
-
 /**
  * Created by willians on 05/08/15.
  */
@@ -10,16 +8,16 @@ public class Movie {
 
     private String movieName;
 
-    private String movieDesc;
+    /*private String movieDesc;
     private String movieImageUrl;
     private String movieAverage;
-    private Date movieDate;
+    private Date movieDate;*/
 
     public Movie(){
 
     }
 
-    public Movie(String movieName, String movieDesc, String movieAverage){
+   /* public Movie(String movieName, String movieDesc, String movieAverage){
 
         this.movieName = movieName;
         this.movieDesc = movieDesc;
@@ -27,25 +25,25 @@ public class Movie {
         this.movieAverage = movieAverage;
         //this.movieDate = movieDate;
 
-    }
+    }*/
 
-    public String getMovieDesc() {
+    /*public String getMovieDesc() {
         return movieDesc;
     }
 
     public void setMovieDesc(String movieDesc) {
         this.movieDesc = movieDesc;
-    }
+    }*/
 
     public String getMovieName() {
         return movieName;
     }
 
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
+    public void setMovieName(String name) {
+        this.movieName = name;
     }
 
-    public String getMovieImageUrl() {
+    /*public String getMovieImageUrl() {
         return movieImageUrl;
     }
 
@@ -67,7 +65,7 @@ public class Movie {
 
     public void setMovieDate(Date movieDate) {
         this.movieDate = movieDate;
-    }
+    }*/
 
 
 }
