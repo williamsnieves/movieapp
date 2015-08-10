@@ -1,5 +1,7 @@
 # Proceso de creacion de MovieApp
 
+* Lo primero es indicar que el minimo sdk soportado es el 16
+
 * Primero se definió la estructura del activity principal, en la cual se colocó un textView con un boton dentro de un Relativelayout para escribir el nombre del actor y buscar las peliculas relacionadas a ese autor
 
 * Luego en el mismo layout del activity se colocaron dos frameslayout uno para cargar un fragment desde el cual se toma el nombre del author y se llama a un metodo del Api service el cual recibe como parametro el nombre del author, este se encarga de hacer el request al API y devuelve un id de author
