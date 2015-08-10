@@ -28,15 +28,23 @@ public class MovieListFragment extends Fragment implements Callback<MovieListRes
     private RecyclerView mMoviewList;
     private MovieListAdapter adapter;
 
+    private int authorId;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         adapter = new MovieListAdapter(getActivity());
+
+        Integer idAuthor = getArguments().getInt("authorId");
+
+        MovieListApiAdapter.getApiService()
+                .getMovieList(idAuthor, this);
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
 
         View fragment = inflater.inflate(R.layout.fragment_movie_list, container, false);
 
@@ -59,21 +67,32 @@ public class MovieListFragment extends Fragment implements Callback<MovieListRes
     public void onResume() {
         super.onResume();
 
-        MovieListApiAdapter.getApiService()
-                .getMovieList(this);
+    }
+
+
+    public int getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 
     @Override
     public void success(MovieListResponse movieListResponse, Response response) {
-        Log.e("success", "caso de exito");
+        Log.e("success fragment movies", movieListResponse.getMovies().toString());
+
         adapter.addAll(movieListResponse.getMovies());
     }
 
     @Override
     public void failure(RetrofitError error) {
-        Log.e("error", "caso de error");
         error.printStackTrace();
     }
+
+
+
+
 
     /*public void setDummyData(){
         ArrayList<Movie> artists = new ArrayList<>();

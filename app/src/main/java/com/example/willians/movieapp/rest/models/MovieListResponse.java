@@ -10,19 +10,36 @@ import java.util.ArrayList;
  */
 public class MovieListResponse {
 
+    /*@SerializedName(JsonKey.AUTHOR_RESULTS)
+    AuthorListResults[] results;*/
+
     @SerializedName(JsonKey.MOVIE_RESULTS)
-    MovieListResults results;
+    ArrayList<Movie> resultsMovie;
 
     public ArrayList<Movie> getMovies(){
-        return results.movies;
+        return resultsMovie;
     }
 
     public void setMovies(ArrayList<Movie> movies){
+        this.resultsMovie = movies;
+    }
+
+    /*public Integer getAuthorMovieId(){
+        return results[0].id;
+    }*/
+
+    /*public void setMovies(ArrayList<Movie> movies){
         this.results.movies = movies;
-    }
+    }*/
 
-    public class MovieListResults{
-
+    /*public class MovieListResults{
+        @SerializedName(JsonKey.MOVIE_ARRAY)
         ArrayList<Movie> movies;
-    }
+    }*/
+
+    /*public class AuthorListResults{
+        //@SerializedName(JsonKey.MOVIE_ARRAY)
+        Integer id;
+    }*/
+
 }

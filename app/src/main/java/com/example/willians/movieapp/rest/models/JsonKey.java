@@ -6,5 +6,7 @@ package com.example.willians.movieapp.rest.models;
 public class JsonKey {
 
     public static final String MOVIE_RESULTS = "results";
-    //public static final String MOVIE_ARRAY = "known_for";
+    public static final String MOVIE_ARRAY = "known_for";
+    public static final String AUTHOR_RESULTS = "results";
+    public static final String MOVIE_NAME = "original_title";
 }

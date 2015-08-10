@@ -19,7 +19,7 @@ public class MovieListApiAdapter {
         if(API_SERVICE == null){
             RestAdapter adapter = new RestAdapter.Builder()
                     .setEndpoint(ApiConstants.URL_BASE)
-                    .setLogLevel(RestAdapter.LogLevel.BASIC)
+                    .setLogLevel(RestAdapter.LogLevel.FULL)
                     .setConverter(buildLastFmApiGsonConverter())
                     .build();
 
