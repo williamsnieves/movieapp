@@ -5,67 +5,58 @@ package com.example.willians.movieapp.domains;
  */
 public class Movie {
 
-
+    //this is the movie name in the item_layout to the recycler view list
     private String movieName;
-
-    /*private String movieDesc;
+    //this is the variable to set image url from server request
     private String movieImageUrl;
+    //this is the variable to set movie average from server
     private String movieAverage;
-    private Date movieDate;*/
+    // this is the variable to set the movie description from server
+    private String movieOverview;
 
+    //constructor class empty
     public Movie(){
 
     }
 
-   /* public Movie(String movieName, String movieDesc, String movieAverage){
-
-        this.movieName = movieName;
-        this.movieDesc = movieDesc;
-        //this.movieImageUrl = movieImageUrl;
-        this.movieAverage = movieAverage;
-        //this.movieDate = movieDate;
-
-    }*/
-
-    /*public String getMovieDesc() {
-        return movieDesc;
-    }
-
-    public void setMovieDesc(String movieDesc) {
-        this.movieDesc = movieDesc;
-    }*/
-
+    //get movie name from variable
     public String getMovieName() {
         return movieName;
     }
-
+    //setter to set moviename value
     public void setMovieName(String name) {
         this.movieName = name;
     }
-
-    /*public String getMovieImageUrl() {
+    //get url image from a movie
+    public String getMovieImageUrl() {
         return movieImageUrl;
     }
-
+    //set url image in movie
     public void setMovieImageUrl(String movieImageUrl) {
         this.movieImageUrl = movieImageUrl;
     }
+
+    //get movie average
 
     public String getMovieAverage() {
         return movieAverage;
     }
 
+    //set movie average from the server
     public void setMovieAverage(String movieAverage) {
         this.movieAverage = movieAverage;
     }
 
-    public Date getMovieDate() {
-        return movieDate;
+
+    //get movie description
+    public String getMovieOverview() {
+        return movieOverview;
     }
 
-    public void setMovieDate(Date movieDate) {
-        this.movieDate = movieDate;
-    }*/
+    //set descriotion from server
+    public void setMovieOverview(String movieOverview) {
+        this.movieOverview = movieOverview;
+    }
 
 
 }

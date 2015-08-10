@@ -19,7 +19,9 @@
             android:id="@+id/movie_img"
             android:layout_width="@dimen/profile_image_size"
             android:layout_height="@dimen/profile_image_size"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
             android:scaleType="centerCrop"
             android:src="@drawable/avatar"
             app:border_color="@android:color/white"
@@ -30,12 +32,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
             android:layout_toRightOf="@+id/movie_img"
             android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-            android:id="@+id/movie_desc"
+            android:id="@+id/movie_avg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/movie_name"
@@ -44,13 +47,24 @@
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
         <TextView
-            android:id="@+id/movie_avg"
+            android:id="@+id/movie_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/movie_desc"
+            android:layout_below="@+id/movie_avg"
             android:layout_toRightOf="@+id/movie_img"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/ic_star"
+            android:layout_below="@+id/movie_name"
+            android:layout_toRightOf="@+id/movie_avg"
+            android:layout_toEndOf="@+id/movie_avg"
+            android:layout_marginLeft="9dp"
+            android:layout_marginStart="9dp" />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

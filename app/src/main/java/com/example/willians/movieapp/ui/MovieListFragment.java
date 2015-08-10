@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,10 +32,12 @@ public class MovieListFragment extends Fragment implements Callback<MovieListRes
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //get an instance from Movie List adapter
         adapter = new MovieListAdapter(getActivity());
-
+        //get author id value from fragment arguments
         Integer idAuthor = getArguments().getInt("authorId");
 
+        //call to api service to get movie array list passing authorid as parameter
         MovieListApiAdapter.getApiService()
                 .getMovieList(idAuthor, this);
     }
@@ -45,19 +46,20 @@ public class MovieListFragment extends Fragment implements Callback<MovieListRes
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-
+        //this allow to inflate view to this fragment
         View fragment = inflater.inflate(R.layout.fragment_movie_list, container, false);
-
+        //call recycler view object from id
         mMoviewList = (RecyclerView)fragment.findViewById(R.id.movie_list);
-
+        //call method to config recycler view with adapter
         setupMovieList();
-        //setDummyData();
 
+        //return fragment view
         return fragment;
     }
 
-
+    //method config recycler view
     public void setupMovieList(){
+
         mMoviewList.setLayoutManager(new LinearLayoutManager(getActivity()));
         mMoviewList.setAdapter(adapter);
         mMoviewList.setItemAnimator(new DefaultItemAnimator());
@@ -69,38 +71,17 @@ public class MovieListFragment extends Fragment implements Callback<MovieListRes
 
     }
 
-
-    public int getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(int authorId) {
-        this.authorId = authorId;
-    }
-
     @Override
     public void success(MovieListResponse movieListResponse, Response response) {
-        Log.e("success fragment movies", movieListResponse.getMovies().toString());
 
+        //add movie array to adapter from server response
         adapter.addAll(movieListResponse.getMovies());
     }
 
     @Override
     public void failure(RetrofitError error) {
+        //show response error
         error.printStackTrace();
     }
 
-
-
-
-
-    /*public void setDummyData(){
-        ArrayList<Movie> artists = new ArrayList<>();
-
-        for (int i=0;i<10;i++){
-            artists.add(new Movie("Artist" + i, "description" + i, "average" + i));
-        }
-
-        adapter.addAll(artists);
-    }*/
 }

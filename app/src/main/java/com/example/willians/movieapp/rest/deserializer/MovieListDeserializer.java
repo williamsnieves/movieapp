@@ -1,7 +1,5 @@
 package com.example.willians.movieapp.rest.deserializer;
 
-import android.util.Log;
-
 import com.example.willians.movieapp.domains.Movie;
 import com.example.willians.movieapp.rest.models.JsonKey;
 import com.example.willians.movieapp.rest.models.MovieListResponse;
@@ -22,18 +20,18 @@ import java.util.ArrayList;
 public class MovieListDeserializer implements JsonDeserializer<MovieListResponse> {
     @Override
     public MovieListResponse deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+        //get instance of Gson class
         Gson gson = new Gson();
-
+        //json from server response
         MovieListResponse response  = gson.fromJson(json, MovieListResponse.class);
-
+        //get a json array to get Movie's data
         JsonArray movieResponseData = json.getAsJsonObject().getAsJsonArray(JsonKey.MOVIE_RESULTS);
-
+        //call a method from model response to set the array movies
         response.setMovies(extractMoviesFromJsonArray(movieResponseData));
-        Log.e("data", movieResponseData.toString());
 
         return response;
     }
-
+    //method to get each properties of json object inside json array and set a Movie instance with this data
     private ArrayList<Movie> extractMoviesFromJsonArray(JsonArray jsonArray){
         ArrayList<Movie> movies = new ArrayList<>();
 
@@ -43,8 +41,19 @@ public class MovieListDeserializer implements JsonDeserializer<MovieListResponse
             Movie currentMovie = new Movie();
 
             String name = movieData.get(JsonKey.MOVIE_NAME).getAsString();
+            String average = movieData.get(JsonKey.MOVIE_AVERAGE).getAsString();
+
+            String desc = movieData.get(JsonKey.MOVIE_DESCRIPTION).toString();
+
+
+            String imageUrlId = movieData.get(JsonKey.MOVIE_IMAGE).getAsString();
+
+            String urlImage = JsonKey.BASE_MOVIE_URL_IMAGE + imageUrlId;
 
             currentMovie.setMovieName(name);
+            currentMovie.setMovieAverage(average);
+            currentMovie.setMovieOverview(desc);
+            currentMovie.setMovieImageUrl(urlImage);
 
             movies.add(currentMovie);
         }
